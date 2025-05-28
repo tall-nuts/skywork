@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>中国名茶排行榜深度解析</title>
+<style>
+            :root {
+                --font-size-body: 16px;
+                --font-size-h5: 16px;       
+                --font-size-h4: 18px;    
+                --font-size-h3: 20px;     
+                --font-size-h2: 24px;    
+                --font-size-h1: 28px;    
+            }
+            body {
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: "SF Pro";
+                font-size: var(--font-size-body);
+                color: #333B46;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.5; 
+                margin: 0 24px 0 24px; /* 上 右 下 左 */
+                padding: 0px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0px auto;
+                padding: 24px 40px;
+                background-color: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+            .chart-container {
+                position: relative;
+                margin: 3em auto;
+                max-width: 500px;
+                height: 400px;
+                overflow: visible;
+                aspect-ratio: 7/5;}
+
+        
+        h1, h2, h3, h4 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Sans-serif for headers */
+            color: #222;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            line-height: 1.3;
+        }
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        h4 {
+            font-size: 1.2em;
+        }
+        p {
+            margin-bottom: 1.2em;
+        }
+        a {
+            color: #0073c0; /* A standard link color */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        blockquote {
+            border-left: 3px solid #0073c0;
+            padding-left: 1em;
+            margin-left: 0;
+            font-style: italic;
+            color: #555;
+        }
+        ul, ol {
+            margin-bottom: 1.2em;
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.2em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .current-time {
+            text-align: right;
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 700px; /* Max width for the chart */
+            height: auto; /* Auto height, or set a fixed one like 500px */
+            min-height: 400px; /* Minimum height to ensure visibility */
+            margin: 30px auto; /* Centering and spacing */
+            padding: 15px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #fff;
+            aspect-ratio: 7/5;}
+        /* Ensure canvas itself is responsive within its container */
+        canvas {
+            max-width: 100%;
+            height: auto !important; /* Override inline style from Chart.js if needed */
+        }
+    
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body><div class="container">
+<p class="current-time">当前时间：2025-05-27</p>
+<h1>探寻中国名茶：流传百年的茶香与文化</h1>
+<p>中国是茶的故乡，茶文化源远流长<em data-skywork="text_badge" data-sk-source-text="中国是茶的故乡，茶文化源远流长。" id="skTag-NDKO3L" class="sk-source-tag" data-sk-source-id="NDKO3L" ></em>。提及中国名茶，人们往往会想到“十大名茶”。然而，所谓的“十大名茶”并非一成不变的官方认证，而是在不同时期、由不同机构或媒体评选出的代表性优质茶叶。这些名茶不仅以其卓越的品质著称，更承载着深厚的历史文化底蕴和动人的传说故事。本文将带您梳理历史上几次知名的“十大名茶”评选，并介绍一些广受认可的中国名茶及其特色。</p>
+<h2>“十大名茶”：一个流动的荣誉</h2>
+<p>“中国十大名茶”的概念深入人心，但具体名单却并非唯一固定。历史上曾有多次评选活动，其结果也因评选标准、时代背景及参与者的不同而有所差异。了解这些不同的榜单，有助于我们更全面地认识中国名茶的丰富多样性。</p>
+<blockquote>
+        “中国十大名茶代表了中国茶叶品种品质与生产制作工艺之最，也显现出中国独特的茶文化魅力。” —— <a href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E5%8D%81%E5%A4%A7%E5%90%8D%E8%8C%B6/176919" target="_blank">百度百科</a>
+</blockquote>
+<p>以下列举了历史上几次较有影响力的“十大名茶”评选结果：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>评选机构/事件</th>
+<th>名茶名单</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1915年</td>
+<td>巴拿马万国博览会</td>
+<td>碧螺春、信阳毛尖、西湖龙井、君山银针、黄山毛峰、武夷岩茶、祁门红茶、都匀毛尖、<strong>安溪铁观音</strong>、六安瓜片<em data-skywork="text_badge" data-sk-source-text="碧螺春、信阳毛尖、西湖龙井、君山银针、黄山毛峰、武夷岩茶、祁门红茶、都匀毛尖、安溪铁观音、六安瓜片" id="skTag-0WCQ9T" class="sk-source-tag" data-sk-source-id="0WCQ9T" ></em></td>
+</tr>
+<tr>
+<td>1959年</td>
+<td>中国“十大名茶”评比会</td>
+<td>西湖龙井、洞庭碧螺春、黄山毛峰、庐山云雾茶、六安瓜片、君山银针、信阳毛尖、武夷岩茶、安溪铁观音、祁门红茶<em data-skywork="text_badge" data-sk-source-text="西湖龙井、洞庭碧螺春、黄山毛峰、庐山云雾茶、六安瓜片、君山银针、信阳毛尖、武夷岩茶、安溪铁观音、祁门红茶" id="skTag-0WCQ9T" class="sk-source-tag" data-sk-source-id="0WCQ9T" ></em></td>
+</tr>
+<tr>
+<td>1999年</td>
+<td>《解放日报》</td>
+<td>洞庭碧螺春、西湖龙井、安徽祁门红茶、六安瓜片、屯溪绿茶、太平猴魁、黄山毛峰、西坪乌龙茶（通常指安溪铁观音）、云南普洱茶、高山云雾茶<em data-skywork="text_badge" data-sk-source-text="洞庭碧螺春、西湖龙井、安徽祁门红茶、六安瓜片、屯溪绿茶、太平猴魁、黄山毛峰、西坪乌龙茶（通常指安溪铁观音）、云南普洱茶、高山云雾茶" id="skTag-0WCQ9T" class="sk-source-tag" data-sk-source-id="0WCQ9T" ></em></td>
+</tr>
+<tr>
+<td>2001年</td>
+<td>美联社和《纽约日报》</td>
+<td>西湖龙井、黄山毛峰、洞庭碧螺春、蒙顶甘露、信阳毛尖、都匀毛尖、庐山云雾、六安瓜片、安溪铁观音、银毫茉莉花茶<em data-skywork="text_badge" data-sk-source-text="西湖龙井、黄山毛峰、洞庭碧螺春、蒙顶甘露、信阳毛尖、都匀毛尖、庐山云雾、六安瓜片、安溪铁观音、银毫茉莉花茶" id="skTag-BUCL51" class="sk-source-tag" data-sk-source-id="BUCL51" ></em></td>
+</tr>
+<tr>
+<td>2002年</td>
+<td>《香港文汇报》</td>
+<td>西湖龙井、洞庭碧螺春、黄山毛峰、君山银针、信阳毛尖、安徽祁门红茶、六安瓜片、都匀毛尖、武夷岩茶、安溪铁观音<em data-skywork="text_badge" data-sk-source-text="西湖龙井、洞庭碧螺春、黄山毛峰、君山银针、信阳毛尖、安徽祁门红茶、六安瓜片、都匀毛尖、武夷岩茶、安溪铁观音" id="skTag-0WCQ9T" class="sk-source-tag" data-sk-source-id="0WCQ9T" ></em></td>
+</tr>
+</tbody>
+</table>
+<p_class="caption">来源：<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E5%8D%81%E5%A4%A7%E5%90%8D%E8%8C%B6/176919" target="_blank">百度百科 - 中国十大名茶</a>
+<p>从上表可见，虽然名单有所变动，但<strong>西湖龙井、洞庭碧螺春、黄山毛峰、六安瓜片、安溪铁观音、祁门红茶、武夷岩茶、信阳毛尖、君山银针</strong>等茶叶凭借其稳定卓越的品质和广泛的知名度，在多次评选中均榜上有名，堪称中国名茶中的常青树。<em data-skywork="text_badge" data-sk-source-text="从上表可见，虽然名单有所变动，但西湖龙井、洞庭碧螺春、黄山毛峰、六安瓜片、安溪铁观音、祁门红茶、武夷岩茶、信阳毛尖、君山银针等茶叶凭借其稳定卓越的品质和广泛的知名度，在多次评选中均榜上有名，堪称中国名茶中的常青树。" id="skTag-0WCQ9T" class="sk-source-tag" data-sk-source-id="0WCQ9T" ></em></p>
+<div class="chart-container">
+<canvas id="famousTeasChart"></canvas>
+</div>
+<p_class="caption">图表说明：根据百度百科提供的五次“十大名茶”评选结果统计，上图显示了部分名茶在这些榜单中的出现频次。
+<h2>广受推崇的中国名茶品鉴</h2>
+<p>尽管“十大”之名有所浮动，但那些品质出众、各具特色的茶叶早已深入人心。以下我们将按照茶的六大基本分类，介绍一些中国极具代表性的名茶。<em data-skywork="text_badge" data-sk-source-text="以下我们将按照茶的六大基本分类，介绍一些中国极具代表性的名茶。" id="skTag-BUCL4X" class="sk-source-tag" data-sk-source-id="BUCL4X" ></em></p>
+<h3>绿茶类：鲜爽清醇，本色天香</h3>
+<p>绿茶是中国产量最多、品类最丰富的茶类，以其“清汤绿叶”的鲜爽特质著称<em data-skywork="text_badge" data-sk-source-text="绿茶是中国产量最多、品类最丰富的茶类，以其“清汤绿叶”的鲜爽特质著称。" id="skTag-NSK26F" class="sk-source-tag" data-sk-source-id="NSK26F" ></em>。不经发酵的制茶工艺最大程度保留了茶叶的天然物质。</p>
+<ul>
+<li><strong>西湖龙井</strong>：产于浙江杭州西湖山区，被誉为“绿茶皇后”。<a href="https://baike.baidu.com/item/%E8%A5%BF%E6%B9%96%E9%BE%99%E4%BA%95/412851" target="_blank">西湖龙井</a>以“色绿、香郁、味甘、形美”四绝著称。特级龙井茶形扁平光滑挺直，色泽嫩绿光润，香气鲜嫩清高，滋味鲜爽甘醇。核心产区包括狮（峰）、龙（井）、云（栖）、虎（跑）、梅（家坞）。</li>
+<li><strong>洞庭碧螺春</strong>：产于江苏苏州太湖洞庭东、西山。<a href="https://baike.baidu.com/item/%E7%A2%A7%E8%9E%BA%E6%98%A5/2682" target="_blank">碧螺春</a>条索纤细，卷曲成螺，满身披毫，银绿隐翠，因茶树与果树间种，带有独特的花果香气，素有“一嫩三鲜”之誉。0.5公斤干茶需6-7万个茶芽。<em data-skywork="text_badge" data-sk-source-text="洞庭碧螺春：产于江苏苏州太湖洞庭东、西山。碧螺春条索纤细，卷曲成螺，满身披毫，银绿隐翠，因茶树与果树间种，带有独特的花果香气，素有“一嫩三鲜”之誉。0.5公斤干茶需6-7万个茶芽。" id="skTag-3T8GSG" class="sk-source-tag" data-sk-source-id="3T8GSG" ></em></li>
+<li><strong>黄山毛峰</strong>：产于安徽黄山。<a href="https://baike.baidu.com/item/%E9%BB%84%E5%B1%B1%E6%AF%9B%E5%B3%B0/3761" target="_blank">黄山毛峰</a>外形微卷，状似雀舌，绿中泛黄，银毫显露，并带有金黄色鱼叶（俗称“黄金片”）。冲泡后雾气绕顶，香气如兰，滋味醇甘。</li>
+<li><strong>六安瓜片</strong>：产于安徽六安大别山一带。<a href="https://baike.baidu.com/item/%E5%85%AD%E5%AE%89%E7%93%9C%E7%89%87/645421" target="_blank">六安瓜片</a>是世界所有茶叶中唯一无芽无梗的茶叶，由单片生叶制成。其形似瓜子，色泽宝绿，香气清高，滋味鲜醇回甘。</li>
+<li><strong>信阳毛尖</strong>：产于河南信阳大别山区，又称“豫毛峰”。<a href="https://baike.baidu.com/item/%E4%BF%A1%E9%98%B3%E6%AF%9B%E5%B0%96/548774" target="_blank">信阳毛尖</a>以“细、圆、光、直、多白毫、香高、味浓、汤色绿”的独特风格著称。</li>
+<li><strong>都匀毛尖</strong>：产于贵州都匀。<a href="https://baike.baidu.com/item/%E9%83%BD%E5%8C%80%E6%AF%9B%E5%B0%96/61336" target="_blank">都匀毛尖</a>以“三绿透黄色”为特色：即干茶色泽绿中带黄，汤色绿中透黄，叶底绿中显黄。条索紧结纤细卷曲，白毫显露，香清高，味鲜浓。</li>
+<li><strong>庐山云雾茶</strong>：产于江西庐山。最早是一种野生茶，始于汉朝，宋代列为“贡茶”。<a href="https://baike.baidu.com/item/%E5%BA%90%E5%B1%B1%E4%BA%91%E9%9B%BE%E8%8C%B6/10501" target="_blank">庐山云雾茶</a>芽叶肥嫩，条索秀丽，香气持久，滋味醇厚。</li>
+</ul>
+<h3>乌龙茶（青茶）类：绿叶红镶边，七泡有余香</h3>
+<p>乌龙茶属于半发酵茶，制作工艺介于绿茶与红茶之间，品质特征既有绿茶的清香，又有红茶的醇厚。<em data-skywork="text_badge" data-sk-source-text="乌龙茶属于半发酵茶，制作工艺介于绿茶与红茶之间，品质特征既有绿茶的清香，又有红茶的醇厚。" id="skTag-8ZRQ4G" class="sk-source-tag" data-sk-source-id="8ZRQ4G" ></em></p>
+<ul>
+<li><strong>安溪铁观音</strong>：产于福建安溪。<a href="https://baike.baidu.com/item/%E5%AE%89%E6%BA%AA%E9%93%81%E8%A7%82%E9%9F%B3/1457" target="_blank">安溪铁观音</a>是乌龙茶的杰出代表，素有“茶王”之称。其条索肥壮紧结，色泽砂绿乌润，具有独特的“观音韵”和天然的兰花香，滋味醇厚甘鲜，回味悠长，“七泡有余香”。</li>
+<li><strong>武夷岩茶（大红袍）</strong>：产于福建武夷山。<a href="https://baike.baidu.com/item/%E6%AD%A6%E5%A4%B7%E5%B2%A9%E8%8C%B6/689180" target="_blank">武夷岩茶</a>生长在岩缝之中，具有独特的“岩韵”（岩骨花香）。其中，大红袍最为著名，被誉为“茶中状元”。其外形条索紧结，色泽绿褐鲜润，汤色橙黄明亮，香气馥郁持久，滋味醇厚回甘。</li>
+</ul>
+<h3>红茶类：红汤红叶，甜醇芬芳</h3>
+<p>红茶是全发酵茶，以其红艳的汤色和叶底得名，滋味醇厚甜和，香气浓郁。<em data-skywork="text_badge" data-sk-source-text="红茶是全发酵茶，以其红艳的汤色和叶底得名，滋味醇厚甜和，香气浓郁。" id="skTag-NSK26P" class="sk-source-tag" data-sk-source-id="NSK26P" ></em></p>
+<ul>
+<li><strong>祁门红茶</strong>：产于安徽祁门，简称“祁红”。<a href="https://baike.baidu.com/item/%E7%A5%81%E9%97%A8%E7%BA%A2%E8%8C%B6/411266" target="_blank">祁门红茶</a>以其特有的“祁门香”（似水果香又似兰花香）闻名于世，是世界三大高香红茶之一。条索紧细秀长，色泽乌润，汤色红艳明亮，滋味鲜醇酣厚。</li>
+</ul>
+<h3>黄茶类：黄汤黄叶，甘醇爽口</h3>
+<p>黄茶是中国特有的茶类，其制作工艺近似绿茶，但在干燥前后增加一道“闷黄”工序，形成了“黄汤黄叶”的特点。<em data-skywork="text_badge" data-sk-source-text="黄茶是中国特有的茶类，其制作工艺近似绿茶，但在干燥前后增加一道“闷黄”工序，形成了“黄汤黄叶”的特点。" id="skTag-8PS4QR" class="sk-source-tag" data-sk-source-id="8PS4QR" ></em></p>
+<ul>
+<li><strong>君山银针</strong>：产于湖南岳阳洞庭湖中的君山。<a href="https://baike.baidu.com/item/%E5%90%9B%E5%B1%B1%E9%93%B6%E9%92%88/844327" target="_blank">君山银针</a>全由芽头制成，茶芽茁壮，长短大小均匀，内呈金黄色，外裹一层白毫，雅称“金镶玉”。冲泡时芽尖在杯中三起三落，蔚为奇观。<em data-skywork="text_badge" data-sk-source-text="君山银针：产于湖南岳阳洞庭湖中的君山。君山银针全由芽头制成，茶芽茁壮，长短大小均匀，内呈金黄色，外裹一层白毫，雅称“金镶玉”。冲泡时芽尖在杯中三起三落，蔚为奇观。" id="skTag-D5ZI81" class="sk-source-tag" data-sk-source-id="D5ZI81" ></em></li>
+</ul>
+<h3>黑茶类：陈香浓郁，越陈越香</h3>
+<p>黑茶属于后发酵茶，因成品茶的外观呈黑色而得名<em data-skywork="text_badge" data-sk-source-text="黑茶属于后发酵茶，因成品茶的外观呈黑色而得名。" id="skTag-BUCL4Y" class="sk-source-tag" data-sk-source-id="BUCL4Y" ></em>。具有越陈越香的品质特点。</p>
+<ul>
+<li><strong>普洱茶</strong>：主产于云南省西双版纳、临沧、普洱等地区。<a href="https://baike.baidu.com/item/%E6%99%AE%E6%B4%B1%E8%8C%B6/384" target="_blank">普洱茶</a>汤色橙黄浓厚（生茶）或红浓明亮（熟茶），香气独特陈香，滋味醇厚回甘，具有“越陈越香”的特点。分为生茶和熟茶两大类。<em data-skywork="text_badge" data-sk-source-text="普洱茶：主产于云南省西双版纳、临沧、普洱等地区。普洱茶汤色橙黄浓厚（生茶）或红浓明亮（熟茶），香气独特陈香，滋味醇厚回甘，具有“越陈越香”的特点。分为生茶和熟茶两大类。" id="skTag-9C97UT" class="sk-source-tag" data-sk-source-id="9C97UT" ></em></li>
+</ul>
+<h3>白茶类：素雅清淡，毫香蜜韵</h3>
+<p>白茶属微发酵茶，制作工艺简单自然，以不炒不揉为特点，最大程度保留了茶叶的原始风味和营养成分。</p>
+<ul>
+<li><strong>福鼎白茶（如白毫银针、白牡丹）</strong>：主产于福建福鼎、政和等地。<a href="https://www.teawiki.cn/post/4100.html" target="_blank">白茶</a>以白毫银针最为名贵，由纯芽头制成，满披白毫，如银似雪；白牡丹则是一芽一、二叶，形态优美。白茶具有毫香显、汤色杏黄明亮、滋味清鲜醇爽的特点，且有“一年茶、三年药、七年宝”的说法。<em data-skywork="text_badge" data-sk-source-text="福鼎白茶（如白毫银针、白牡丹）：主产于福建福鼎、政和等地。白茶以白毫银针最为名贵，由纯芽头制成，满披白毫，如银似雪；白牡丹则是一芽一、二叶，形态优美。白茶具有毫香显、汤色杏黄明亮、滋味清鲜醇爽的特点，且有“一年茶、三年药、七年宝”的说法。" id="skTag-8IHGJO" class="sk-source-tag" data-sk-source-id="8IHGJO" ></em></li>
+</ul>
+<p>除上述名茶外，中国还有许多品质优异、各具特色的茶叶，如太平猴魁（绿茶）、蒙顶甘露（绿茶）、安化黑茶（黑茶）、六堡茶（黑茶）、凤凰单丛（乌龙茶）等，它们共同构成了中国灿烂的茶文化图景。 <a href="https://www.cnpp.cn/focus/40901.html" target="_blank">CNPP资料显示，茉莉花茶、正山小种等亦广受欢迎。</a></p>
+<h2>结论：品味名茶，感悟文化</h2>
+<p>中国名茶的“排行榜”是一个动态的概念，它反映了不同时代人们对茶叶品质和文化的认知与偏好。与其拘泥于一份固定的名单，不如将这些评选视为一个指引，引领我们去探索和品味中国各地丰富多彩的茶品。每一款名茶背后，都蕴藏着独特的自然环境、精湛的制作技艺和深厚的人文积淀。通过品饮这些名茶，我们不仅能享受到味蕾的盛宴，更能感受到中国茶文化的博大精深。</p>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const teaLabels = ['西湖龙井', '洞庭碧螺春', '黄山毛峰', '六安瓜片', '安溪铁观音', '信阳毛尖', '祁门红茶', '武夷岩茶', '君山银针', '都匀毛尖', '庐山云雾茶'];
+        const  teaData = [5, 5, 5, 5, 5, 4, 4, 4, 3, 3, 2]; // Appearance count in the 5 lists from Baidu Baike
+
+        const ctx = document.getElementById('famousTeasChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: teaLabels,
+                datasets: [{
+                    label: '在五大知名“十大名茶”榜单中出现的次数',
+                    data: teaData,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(75, 192, 100, 0.7)',
+                        'rgba(200, 200, 100, 0.7)',
+                        'rgba(100, 150, 200, 0.7)',
+                        'rgba(150, 100, 50, 0.7)',
+                        'rgba(120, 120, 120, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 100, 1)',
+                        'rgba(200, 200, 100, 1)',
+                        'rgba(100, 150, 200, 1)',
+                        'rgba(150, 100, 50, 1)',
+                        'rgba(120, 120, 120, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Makes it a horizontal bar chart
+                responsive: true,
+                maintainAspectRatio: false, // Important for height auto to work well
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '出现次数'
+                        },
+                        ticks: {
+                            stepSize: 1 // Ensures integer steps like 1, 2, 3, 4, 5
+                        }
+                    },
+                    y: {
+                         title: {
+                            display: true,
+                            text: '茶叶名称'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '部分名茶在五大历史“十大名茶”榜单中出现频率统计',
+                        font: {
+                            size: 16
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    legend: {
+                        display: false // Only one dataset, so legend is not very useful
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x + '次';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</p_class="caption"></p_class="caption"></div></body>
+</html>
